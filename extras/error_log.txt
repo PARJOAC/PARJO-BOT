@@ -1,0 +1,4 @@
+[13/9/2024, 17:08:28]
+\\?\E:\ParjoBot\node_modules\canvas\build\Release\canvas.node no es una aplicación Win32 válida.
+\\?\E:\ParjoBot\node_modules\canvas\build\Release\canvas.node
+--------------------
