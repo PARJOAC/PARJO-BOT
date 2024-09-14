@@ -1,5 +1,16 @@
-const { Client, Collection, Partials, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Partials, GatewayIntentBits, ActivityType, ChannelType, EmbedBuilder } = require('discord.js');
 const chalk = require("chalk");
+
+
+const fetch = require('node-fetch');
+const { google } = require('googleapis');
+const Video = require('./schemas/youtube.js');
+const fs = require("fs");
+const axios = require("axios");
+
+const API_KEY = process.env.API_YOUTUBE;
+const CHANNEL_ID = process.env.ID_CANAL_YOUTUBE;
+const youtube = google.youtube({ version: 'v3', auth: API_KEY });
 
 const client = new Client({
   intents: [
