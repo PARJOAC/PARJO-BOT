@@ -13,17 +13,6 @@ const youtube = google.youtube({ version: 'v3', auth: API_KEY });
 
 module.exports = async (client) => {
 
-  client.user.setPresence({
-    activities: [{
-      name: `mejorar el servidor`,
-      type: ActivityType.Competing
-    }],
-    status: 'online',
-  });
-
-  setInterval(() => checkNewVideos(client), 1 * 60 * 1000);
-}
-
 
 async function checkNewVideos(client) {
   try {
@@ -82,4 +71,15 @@ async function checkNewVideos(client) {
   } catch (error) {
     console.log('Error al obtener videos del canal de YouTube:', error);
   }
+}
+
+  client.user.setPresence({
+    activities: [{
+      name: `mejorar el servidor`,
+      type: ActivityType.Competing
+    }],
+    status: 'online',
+  });
+
+  setInterval(() => checkNewVideos(client), 1 * 60 * 1000);
 }
