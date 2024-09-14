@@ -9,6 +9,7 @@ module.exports = async (client) => {
   for (const file of files) {
     if (file.endsWith(".js")) {
       const eventName = file.slice(0, -3);
+      console.log(`Evento Iniciado correctamente: ${eventName}`)
       client.on(eventName, require(path.join(eventosPath, file)).bind(null, client));
     }
   }
