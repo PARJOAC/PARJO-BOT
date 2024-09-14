@@ -1,4 +1,4 @@
-const { Client, Collection, Partials, GatewayIntentBits, ActivityType, ChannelType, EmbedBuilder } = require('discord.js');
+const { Client, Collection, Partials, GatewayIntentBits, ActivityType, ChannelType, Events } = require('discord.js');
 const chalk = require("chalk");
 
 
@@ -62,7 +62,7 @@ const Mongo = require("./inicializacion_eventos/mongo.js");
   await Slash(client);
   await Eventos(client);
   await KeepAlive();
-  await client.on("ready", async(client) => {
+  await client.once(Events.ClientReady, async(client) => {
   client.user.setPresence({
     activities: [{
       name: `mejorar el servidor`,
