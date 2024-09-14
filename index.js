@@ -62,8 +62,20 @@ const Mongo = require("./inicializacion_eventos/mongo.js");
   await Slash(client);
   await Eventos(client);
   await KeepAlive();
-  client.on("ready", async(client) => {
-    async function checkNewVideos(client) {
+  await client.on("ready", async(client) => {
+  client.user.setPresence({
+    activities: [{
+      name: `mejorar el servidor`,
+      type: ActivityType.Competing
+    }],
+    status: 'online',
+  });
+
+  setInterval(() => checkNewVideos(client), 1 * 60 * 1000);
+  })
+})();
+
+async function checkNewVideos(client) {
   try {
     const response = await youtube.channels.list({
       part: 'snippet,contentDetails',
@@ -121,15 +133,3 @@ const Mongo = require("./inicializacion_eventos/mongo.js");
     console.log('Error al obtener videos del canal de YouTube:', error);
   }
 }
-
-  client.user.setPresence({
-    activities: [{
-      name: `mejorar el servidor`,
-      type: ActivityType.Competing
-    }],
-    status: 'online',
-  });
-
-  setInterval(() => checkNewVideos(client), 1 * 60 * 1000);
-  })
-})();
