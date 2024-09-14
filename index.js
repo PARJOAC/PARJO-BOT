@@ -5,6 +5,7 @@ const chalk = require("chalk");
 const fetch = require('node-fetch');
 const { google } = require('googleapis');
 const Video = require('./schemas/youtube.js');
+const Twitch = require('./schemas/twitch.js');
 const fs = require("fs");
 const axios = require("axios");
 
